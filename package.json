@@ -1,0 +1,31 @@
+{
+  "name": "jscode",
+  "version": "1.0.0",
+  "description": "小段代码",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fanyoufu/jscode.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fanyoufu/jscode/issues"
+  },
+  "homepage": "https://github.com/fanyoufu/jscode#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "babel-jest": "^27.4.5",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "jest": "^27.4.5"
+  }
+}
