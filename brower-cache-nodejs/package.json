@@ -1,0 +1,15 @@
+{
+  "name": "brower-cache-nodejs",
+  "version": "0.0.1",
+  "description": "在nodejs写服务器代码，验证浏览器缓存效果",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "etag": "^1.8.1",
+    "fresh": "^0.5.2"
+  }
+}
