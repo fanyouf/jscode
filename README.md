@@ -7,6 +7,8 @@
 测试某个功能
 ```
 npx jest src/02-currying.test.js
+// or
+jest 02
 ```
 
 ### 测试全部
