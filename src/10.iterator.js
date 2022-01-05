@@ -1,9 +1,9 @@
-// for of : 数组
+
 // for in : 数组
 // for ... in 循环返回的值都是数据结构的 键值名。
 // 遍历对象返回的对象的key值,遍历数组返回的数组的下标(key)。
-// for ... in 循环不仅可以遍历数字键名,还会遍历原型上的值和手动添加的其他键。如——例3
-// 特别情况下, for ... in 循环会以看起来任意的顺序遍历键名
+// for ... in 循环不仅可以遍历自有键名,还会遍历原型上的可枚举的值，
+// 哪怕是Object.prototype上的可枚举属性
 
 {
   const arr = ['a', 'b']
@@ -42,16 +42,28 @@
     // 3
   }
 
-//   f(1, 2, 3)
+  f(1, 2, 3)
 }
 
-// {
-//   const obj = { a: 1, b: 2 }
-//   for (const i in obj) {
-//     console.log(i)
-//   }
+{
+  Object.prototype.objCustom = function () {}
+  Array.prototype.arrCustom = function () {}
 
-//   for (const i of obj) {
-//     console.log(i)
-//   }
-// }
+  const iterable = [3, 5, 7]
+  iterable.foo = 'hello'
+
+  for (const i in iterable) {
+    console.log(i) //  0, 1, 2, "foo", "arrCustom", "objCustom"
+  }
+}
+
+{
+  const obj = { a: 1, b: 2 }
+  for (const i in obj) {
+    console.log(i)
+  }
+
+  for (const i of obj) {
+    console.log(i)
+  }
+}
