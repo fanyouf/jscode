@@ -4,6 +4,7 @@ module.exports = {
     es2021: true,
     node: true
   },
+  // 容许jest 全局变量
   globals: {
     test: true,
     expect: true
@@ -15,5 +16,6 @@ module.exports = {
   //     "ecmaVersion": 13
   // },
   rules: {
+    camelcase: 'off'
   }
 }
