@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="div">
+    <div>1234</div>
+    <div>
+    <span>
+      <em>4567</em>
+      <i>4567</i>
+    </span>
+    <span>
+      <div>4567</div>
+    </span>
+    <div>8888</div>
+    </div>
+    </div>
+  <main>
+    <article>
+      <div class="imageArea">
+        <div class="imageWrapper">
+          <img />
+          <icon class="play"/>
+        </div>
+        <h4>标题</h4>
+      </div class="imageAera">
+      <footer>
+        <div><img src=""/><span>作者名</span></div>
+        <div>
+          <icon class="zan"/><span>12.5万</span>
+        </div>
+      </footer>
+    </article>
+    <!-- // 重复... -->
+  
+  </main>
+  <script>
+    const dom = document.querySelector('#div')
+
+    function getN(dom, n, res=[]) {
+      if(n === 1) {
+        if(dom.children.length) {
+          res.push(...dom.children)
+        }
+        else {
+          res.push(dom.childNodes[0])
+        }
+      } else {
+        Array.from(dom.children).forEach(item => {
+          getN(item, n-1, res)
+        })
+      }
+    }
+    const res = []
+    getN(dom,3,res)
+    console.dir(res)
+  </script>
+</body>
+</html>
