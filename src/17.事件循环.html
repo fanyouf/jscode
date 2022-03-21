@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #blue {
+            animation: slidein 2s infinite alternate ;
+        }
+        @keyframes slidein {
+            from { font-size: 50px; }
+            to   { font-size: 40px;}
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="blue">
+        css动画
+    </div>
+    <button id="btn1">1000/60，先渲染（改颜色），再卡死</button>
+    <button id="btn2">1000/60 - 3，卡死，不会渲染（改颜色）</button>
+    <button id="btn3">卡死2秒，2秒后渲染（改颜色）</button>
+    <script>
+        setInterval(()=>{
+            console.log(Date.now())
+        },10)
+        // 1. js引擎和js代码死循环之后，页面无法渲染。GUI渲染引擎与JS引擎互斥。
+        // 2. js代码的执行和GUI渲染引擎的执行是由系统调度的。按物理硬件的刷新频率而定。
+        //    一般是16.7ms。
+        // 3. 从现在开始执行js代码：
+        //    1. 16.7ms内能完成js代码的执行，渲染页面
+        //    2. 16.7ms内不能完成js代码的执行，则以实际需要花的时间为准。
+        //       例如需要2s才能完成，则2s后渲染页面;如果陷入了死循环，则页面永远卡死
+        document.getElementById("btn1").addEventListener('click', () => {
+            document.getElementById('blue').style.color = 'blue'
+            setTimeout(()=>{
+                while(true) {}
+            }, 1000/60)
+        })
+        document.getElementById("btn2").addEventListener('click', () => {
+            document.getElementById('blue').style.color = 'blue'
+            setTimeout(()=>{
+                while(true) {}
+            }, 1000/60 - 10)
+        })
+        document.getElementById("btn3").addEventListener('click', () => {
+            document.getElementById('blue').style.color = 'blue'
+            const t = Date.now()
+            while(Date.now() - t < 2000) {}
+        })
+    </script>
+</body>
+</html>
