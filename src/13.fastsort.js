@@ -3,9 +3,6 @@ for (let i = 0; i < arr.length; i++) {
   arr[i] = Math.ceil(100 * Math.random())
 }
 
-// console.log('arr', arr.toString())
-// const arr = [6, 1, 5, 10, 3, 2, 11, 20]
-
 function swap (arr, i, j) {
   const t = arr[i]
   arr[i] = arr[j]
