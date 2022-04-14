@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const tcData = [
+        {
+            id: '1000',
+            name: '深圳',
+            children: [
+            {
+                id: '1001',
+                name: '宝安',
+                children: []
+            },
+            {
+                id: '1002',
+                name: '南山',
+                children: [
+                        {
+                    id: '1012',
+                    name: '粤海街道',
+                    children: [
+                    {
+                        id: '1112',
+                        name: '阿里中心',
+                        children: []
+                    },
+                    {
+                        id: '1212',
+                        name: '深圳湾人才公园',
+                        children: []
+                    }
+                    ]
+                }
+                ]
+            }
+            ]
+        },
+        {
+            id: '2000',
+            name: '广州',
+            children: [
+            {
+                id: '2001',
+                name: '越秀区',
+                children: [
+                {
+                    id: '2011',
+                    name: '人民公园'
+                }
+                ]
+            },
+            {
+                id: '2002',
+                name: '天河区',
+                children: []
+            }
+            ]
+        }
+        ];
+
+//请实现find函数
+function find(data, id) {
+    let res = '未找到'
+    function walk(data,id) {
+        for(var i = 0; i< data.length; i++) {
+            const it = data[i]
+            if(it.id === id) {
+              res = it.name
+              break
+            } else if (it.children && it.children.length > 0) {
+                walk(it.children, id)
+            } 
+        }
+    }
+    walk(data,id)
+    return res
+}
+
+console.log(find(tcData, '1000')); // => '深圳'
+console.log(find(tcData, '2001')); // => '越秀区'
+console.log(find(tcData, '1012')); // => '粤海街道'
+console.log(find(tcData, '1112')); // => '阿里中心'
+console.log(find(tcData, '1222')); // => '未找到'
+  
+    </script>
+</body>
+</html>
